@@ -1,6 +1,7 @@
 import React from 'react'
 import RegistrationForm from './components/RegistrationForm'
 import InternDetails from './components/InternDetails';
+import InternList from './components/InternList';
 import './App.css';
 
 
@@ -10,10 +11,13 @@ function App() {
   return (
     <>
       <h1>Intern Registration</h1>
-      <RegistrationForm />
-      <InternDetails />
+      {/* <RegistrationForm /> */}
+      <InternDetails internId={internId} />
+      {/* <InternList /> */}
     </>
   )
 }
 
 export default App
+
+

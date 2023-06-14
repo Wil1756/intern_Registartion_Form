@@ -1,43 +1,58 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import '../styles/InternDetails.css';
 
 
 const InternDetails = ({ internId }) => {
     const [intern, setIntern] = useState(null);
 
     useEffect(() => {
-        fetchIntern();
-    }, [internId]);
-
-    const fetchIntern = async () => {
-        try {
-            const response = await fetch(`/interns/${internId}`);
-            if (response.ok) {
-                const data = await response.json();
-                setIntern(data);
-            } else {
-                console.log('Error fetching intern details:', response.statusText);
-            }
-        } catch (error) {
-            console.log('Error fetching intern details:', error);
-        }
-    }
+        axios.get(`http://127.0.0.1:5000/interns`)
+            .then((res) => {
+                const intern = res.data;
+                setIntern(intern);
+            });
+    }, [intern]);
 
     if (!intern) {
         return <div>Loading intern details...</div>;
     }
     return (
-        <>
+        <div className='InternDetails'>
             <h2>Intern Details</h2>
-            <p><strong>Name:</strong>{InternDetails.name}</p>
-            <p><strong>Email:</strong>{InternDetails.email}</p>
-            <p><strong>Start Date:</strong>{InternDetails.startDate}</p>
-            <p><strong>Role:</strong>{InternDetails.role}</p>
-            <p><strong>University:</strong>{InternDetails.university}</p>
-            <p><strong>Country:</strong>{InternDetails.country}</p>
-            <p><strong>Tel:</strong>{InternDetails.tel}</p>
-
-
-        </>
+            {
+                intern.map((intern) => (
+                    <div key={intern.id}>
+                        <ul>
+                            <li>
+                                <span className="label">Name:</span>
+                                <span className="value">{intern.name}</span>
+                            </li>
+                            <li>
+                                <span className="label">Email:</span>
+                                <span className="value">{intern.email}</span>
+                            </li>
+                            <li>
+                                <span className="label">School:</span>
+                                <span className="value">{intern.school}</span>
+                            </li>
+                            <li>
+                                <span className="label">Nationality:</span>
+                                <span className="value">{intern.nationality}</span>
+                            </li>
+                            <li>
+                                <span className="label">Designation:</span>
+                                <span className="value">{intern.designation}</span>
+                            </li>
+                            <li>
+                                <span className="label">Contact:</span>
+                                <span className="value">{intern.contact}</span>
+                            </li>
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
     );
 }
 

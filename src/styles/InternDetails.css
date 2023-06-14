@@ -1,0 +1,32 @@
+.InternDetails {
+    margin-top: 20px;
+  }
+  
+  .InternDetails h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .InternDetails ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .InternDetails li {
+    margin-bottom: 5px;
+  }
+  
+  .InternDetails li span {
+    font-weight: bold;
+  }
+  
+  .InternDetails li .label {
+    margin-right: 5px;
+  }
+  
+  .InternDetails li .value {
+    color: #333;
+  }
+  

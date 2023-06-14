@@ -1,9 +1,10 @@
-import flask
-from flask import Flask, jsonify, request,Response,json;
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-app = flask.Flask(__name__)
+
+app = Flask(__name__)
 CORS(app)
+
 
 interns =[
     { 
@@ -118,28 +119,29 @@ interns =[
     }
 ]
 
-# @app.route('/api/interns', methods=['POST'])
-# def add_interns():
-#     new_intern = request.get_json()
-#     interns.append(new_intern)
-#     return jsonify(new_intern), 201
-
-# @app.route('/interns/<int:intern_id>', methods=['DELETE'])
-# def delete_intern(intern_id):
-#     intern_to_delete = next((intern for intern in interns if intern['id'] == intern_id), None)
-#     if intern_to_delete:
-#         interns.remove(intern_to_delete)
-#         return jsonify({'message': 'Intern deleted successfully'})
-#     else:
-#         return jsonify({'message':'Intern not found'}), 404
+@app.route('/interns', methods=['GET'])
+def get_interns():
+    return jsonify(interns)
 
 
-# if __name__ == '__main__':
-#     app.run()
+@app.route('/interns', methods=['POST'])
+def add_interns():
+    new_intern = request.get_json()
+    interns.append(new_intern)
+    return jsonify(new_intern), 201
 
-@app.route('/', methods=["GET", "POST"])
-def index():
-    return json.dumps(interns)
-    
-app.run()
-    
+@app.route('/interns/<int:intern_id>', methods=['DELETE'])
+def delete_intern(intern_id):
+    intern_to_delete = next((intern for intern in interns if intern['id'] == intern_id), None)
+    if intern_to_delete:
+        interns.remove(intern_to_delete)
+        return jsonify({'message': 'Deleted successfully'})
+    else:
+        return jsonify({'message': 'Not found'}), 404
+
+
+if __name__ == "__main__":
+    app.run()
+
+
+

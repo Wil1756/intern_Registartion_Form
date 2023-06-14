@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         name: '',
+        nationality: '',
         email: '',
         course: '',
-        university: '',
-        role: '',
-        country: '',
-        tel: '',
+        school: '',
+        designation: '',
+        contact: '',
+        duration: ''
     })
 
     const handleChange = (e) => {
@@ -42,12 +43,13 @@ const RegistrationForm = () => {
 
         setFormData({
             name: '',
+            nationality: '',
             email: '',
             course: '',
-            university: '',
-            role: '',
-            country: '',
-            tel: '',
+            school: '',
+            designation: '',
+            contact: '',
+            duration: ''
         })
     }
     return (
@@ -58,6 +60,16 @@ const RegistrationForm = () => {
                     type='text'
                     name='name'
                     value={formData.name}
+                    onChange={handleChange}
+                />
+            </label>
+            <br />
+            <label>
+                Nationality:
+                <input
+                    type='text'
+                    name='nationality'
+                    value={formData.nationality}
                     onChange={handleChange}
                 />
             </label>
@@ -83,41 +95,41 @@ const RegistrationForm = () => {
             </label>
             <br />
             <label>
-                University:
+                School:
                 <input
                     type='text'
-                    name='university'
-                    value={formData.university}
+                    name='school'
+                    value={formData.school}
                     onChange={handleChange}
                 />
             </label>
             <br />
             <label>
-                Role:
+                Designation:
                 <input
                     type='text'
-                    name='role'
-                    value={formData.role}
+                    name='designation'
+                    value={formData.designation}
                     onChange={handleChange}
                 />
             </label>
             <br />
             <label>
-                Country:
+                Contact:
                 <input
                     type='text'
-                    name='country'
-                    value={formData.country}
+                    name='contact'
+                    value={formData.contact}
                     onChange={handleChange}
                 />
             </label>
             <br />
             <label>
-                Tel:
+                Duration:
                 <input
                     type='text'
-                    name='tel'
-                    value={formData.tel}
+                    name='duration'
+                    value={formData.duration}
                     onChange={handleChange}
                 />
             </label>
