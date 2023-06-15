@@ -10,9 +10,9 @@ function App() {
 
   return (
     <>
-      <h1>Intern Registration</h1>
-      {/* <RegistrationForm /> */}
-      <InternDetails internId={internId} />
+      <h1>Intern Registration Form</h1>
+      <RegistrationForm />
+      {/* <InternDetails internId={internId} /> */}
       {/* <InternList /> */}
     </>
   )

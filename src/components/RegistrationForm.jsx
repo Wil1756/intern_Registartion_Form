@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import '../styles/RegistrationForm.css';
+
 
 const RegistrationForm = () => {
+    const [checked, setChecked] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         nationality: '',
@@ -55,84 +58,86 @@ const RegistrationForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <label>
-                Name:
                 <input
                     type='text'
-                    name='name'
+                    placeholder='Name'
                     value={formData.name}
                     onChange={handleChange}
                 />
             </label>
             <br />
             <label>
-                Nationality:
                 <input
                     type='text'
-                    name='nationality'
+                    placeholder='Nationality'
                     value={formData.nationality}
                     onChange={handleChange}
                 />
             </label>
             <br />
             <label>
-                Email:
                 <input
                     type='text'
-                    name='email'
+                    placeholder='Email'
                     value={formData.email}
                     onChange={handleChange}
                 />
             </label>
             <br />
             <label>
-                Course:
                 <input
                     type='text'
-                    name='course'
+                    placeholder='Course'
                     value={formData.course}
                     onChange={handleChange}
                 />
             </label>
             <br />
             <label>
-                School:
                 <input
                     type='text'
-                    name='school'
+                    placeholder='School'
                     value={formData.school}
                     onChange={handleChange}
                 />
             </label>
             <br />
             <label>
-                Designation:
                 <input
                     type='text'
-                    name='designation'
+                    placeholder='Designation'
                     value={formData.designation}
                     onChange={handleChange}
                 />
             </label>
             <br />
             <label>
-                Contact:
                 <input
                     type='text'
-                    name='contact'
+                    placeholder='Contact'
                     value={formData.contact}
                     onChange={handleChange}
                 />
             </label>
             <br />
             <label>
-                Duration:
                 <input
                     type='text'
-                    name='duration'
+                    placeholder='Duration'
                     value={formData.duration}
                     onChange={handleChange}
                 />
             </label>
+            <br />
+            <>
+                <input
+                    type="checkbox"
+                    id="agree"
+                    checked={checked}
+                    onChange={(e) => setChecked(e.target.checked)}
+                />
+                <label htmlFor="agree">I agree to the terms and conditions</label>
+            </>
             <br />
             <button>Register</button>
         </form>
